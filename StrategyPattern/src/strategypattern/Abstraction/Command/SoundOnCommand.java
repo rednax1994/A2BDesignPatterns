@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package strategypattern.Abstraction;
+package strategypattern.Abstraction.Command;
 
 import strategypattern.Control.ClockControl;
 
@@ -11,18 +11,17 @@ import strategypattern.Control.ClockControl;
  *
  * @author xandergerreman
  */
-public class SoundOffCommand implements Command{
+public class SoundOnCommand implements Command{
 
     ClockControl clockControl;
     
-    public SoundOffCommand(ClockControl clockControl){
+    public SoundOnCommand(ClockControl clockControl){
         this.clockControl = clockControl;
     }
     
     @Override
     public void execute() {
-        clockControl.NoTick();
+        clockControl.Tick();
     }
-    
     
 }

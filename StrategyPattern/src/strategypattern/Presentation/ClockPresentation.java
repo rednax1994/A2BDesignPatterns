@@ -9,9 +9,9 @@ import java.awt.Component;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import strategypattern.Abstraction.Clock;
-import strategypattern.Abstraction.SoundControl;
-import strategypattern.Abstraction.SoundOffCommand;
-import strategypattern.Abstraction.SoundOnCommand;
+import strategypattern.Abstraction.Command.SoundControl;
+import strategypattern.Abstraction.Command.SoundOffCommand;
+import strategypattern.Abstraction.Command.SoundOnCommand;
 import strategypattern.Control.ClockControl;
 
 /**
