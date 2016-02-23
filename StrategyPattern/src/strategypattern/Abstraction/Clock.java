@@ -16,4 +16,6 @@ public interface Clock {
     public JPanel drawClock();
 
     public void setTimeZone(TimeZone timeZone);
+    
+    public TimeZone getTimeZone();
 }

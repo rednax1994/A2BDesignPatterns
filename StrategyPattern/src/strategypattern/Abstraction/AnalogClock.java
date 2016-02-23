@@ -35,4 +35,10 @@ public class AnalogClock implements Clock {
         this.timeZone = timeZone;
     }
 
+    @Override
+    public TimeZone getTimeZone() {
+        return this.timeZone;
+    }
+    
+
 }

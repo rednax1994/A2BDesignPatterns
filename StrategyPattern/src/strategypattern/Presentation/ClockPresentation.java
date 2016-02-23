@@ -9,6 +9,9 @@ import java.awt.Component;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import strategypattern.Abstraction.Clock;
+import strategypattern.Abstraction.SoundControl;
+import strategypattern.Abstraction.SoundOffCommand;
+import strategypattern.Abstraction.SoundOnCommand;
 import strategypattern.Control.ClockControl;
 
 /**
@@ -16,7 +19,7 @@ import strategypattern.Control.ClockControl;
  * @author rebirth
  */
 public class ClockPresentation extends javax.swing.JFrame {
-
+    SoundControl soundControl = new SoundControl();
     ClockControl clockControl;
 
     /**
@@ -126,7 +129,7 @@ public class ClockPresentation extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(setMET)
                     .addComponent(setUTC))
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(297, Short.MAX_VALUE))
         );
         displaySettingsLayout.setVerticalGroup(
             displaySettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +176,7 @@ public class ClockPresentation extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(tickSoundButton)
                     .addComponent(noSoundButton))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(282, Short.MAX_VALUE))
         );
         SoundSettingsLayout.setVerticalGroup(
             SoundSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +191,7 @@ public class ClockPresentation extends javax.swing.JFrame {
         );
 
         clockPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        clockPanel1.setLayout(new java.awt.GridLayout());
+        clockPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,13 +200,13 @@ public class ClockPresentation extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(displaySettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(clockPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(clockPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(displaySettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(clockPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(SoundSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,11 +236,15 @@ public class ClockPresentation extends javax.swing.JFrame {
     }//GEN-LAST:event_setMETMouseClicked
 
     private void noSoundButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noSoundButtonMouseClicked
-        clockControl.stopSound();
+        SoundOffCommand soundOff = new SoundOffCommand(clockControl);
+        soundControl.setCommand(soundOff);
+        soundControl.buttonWasPressed();
     }//GEN-LAST:event_noSoundButtonMouseClicked
 
     private void tickSoundButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tickSoundButtonMouseClicked
-        clockControl.startSound();
+        SoundOnCommand soundOn = new SoundOnCommand(clockControl);
+        soundControl.setCommand(soundOn);
+        soundControl.buttonWasPressed();
     }//GEN-LAST:event_tickSoundButtonMouseClicked
 
     private void setUTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setUTCActionPerformed

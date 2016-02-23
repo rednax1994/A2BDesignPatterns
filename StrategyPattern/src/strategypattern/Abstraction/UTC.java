@@ -22,6 +22,7 @@ public class UTC extends TimeZone {
     public Date dateNow() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
+        cal.getTime();
         return cal.getTime();
     }
 

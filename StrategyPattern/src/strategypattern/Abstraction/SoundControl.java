@@ -5,19 +5,20 @@
  */
 package strategypattern.Abstraction;
 
-import java.util.Date;
-
 /**
  *
  * @author xandergerreman
  */
-public abstract class TimeZone {
-
-    String description = "Timezone";
-
-    public String getDescription() {
-        return description;
+public class SoundControl {
+    Command slot;
+    
+    public SoundControl(){}
+    
+    public void setCommand(Command command){
+        slot = command;
     }
-
-    public abstract Date dateNow();
+    
+    public void buttonWasPressed(){
+        slot.execute();
+    }
 }

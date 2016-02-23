@@ -15,21 +15,20 @@ import strategypattern.Presentation.ClockPresentation;
  * @author rebirth
  */
 public class ClockControl {
-
-    private Clock clock;
+    //private Clock clock;
     private Sound sound;
-    private ClockPresentation clockPresentation;
-    Thread ticker;
-
     private TimeZone timeZone;
+    private ClockPresentation clockPresentation;
+    
+    Thread ticker;
 
     private List<Clock> clocks = new ArrayList<Clock>();
 
     public ClockControl(ClockPresentation clockPresentation) {
-        stopSound();
         this.clockPresentation = clockPresentation;
         initAnalogClock();
         initDigitalClock();
+        NoTick();
         tick();
     }
 
@@ -76,11 +75,11 @@ public class ClockControl {
         notifyAllObservers();
     }
 
-    public void startSound() {
+    public void Tick() {
         sound = new Tick();
     }
 
-    public void stopSound() {
+    public void NoTick() {
         sound = new NoTick();
     }
 

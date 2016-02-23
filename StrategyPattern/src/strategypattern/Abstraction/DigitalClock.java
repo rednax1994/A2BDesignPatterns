@@ -34,4 +34,9 @@ public class DigitalClock implements Clock {
     public void setTimeZone(TimeZone timeZone) {
         this.timeZone = timeZone;
     }
+
+    @Override
+    public TimeZone getTimeZone() {
+        return this.timeZone;
+    }
 }

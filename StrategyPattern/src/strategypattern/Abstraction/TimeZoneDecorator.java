@@ -5,19 +5,10 @@
  */
 package strategypattern.Abstraction;
 
-import java.util.Date;
-
 /**
  *
  * @author xandergerreman
  */
-public abstract class TimeZone {
-
-    String description = "Timezone";
-
-    public String getDescription() {
-        return description;
-    }
-
-    public abstract Date dateNow();
+public abstract class TimeZoneDecorator extends TimeZone{
+    public abstract String getDescription();
 }
